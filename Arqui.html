@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Arquitectura de Computadoras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7fafc;
+            color: #222;
+            margin: 0;
+        }
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+        nav {
+            background: #eaeaea;
+            padding: 0.7rem 0;
+            text-align: center;
+        }
+        nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #ff9800;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #0001;
+            padding: 2rem;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 2rem;
+        }
+        h3 {
+            color: #ff9800;
+            margin-top: 1.5rem;
+        }
+        ul, ol {
+            margin-left: 1.5rem;
+        }
+        .indice {
+            background: #e3eafc;
+            border-left: 4px solid #1976d2;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .practica {
+            background: #fffbe7;
+            border-left: 4px solid #ff9800;
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+        .subtitulo {
+            color: #1976d2;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        .highlight {
+            background: #f3f3f3;
+            border-left: 4px solid #1976d2;
+            padding: 0.7rem 1rem;
+            margin: 1rem 0;
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem 0 1rem 0;
+            background: #2c3e50;
+            color: #fff;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Arquitectura de Computadoras</h1>
+        <p>Resumen de temas y conceptos clave</p>
+    </header>
+    <nav>
+        <a href="#indice">Temario</a>
+        <a href="#unidad1">Unidad 1</a>
+        <a href="#unidad2">Unidad 2</a>
+        <a href="#unidad3">Unidad 3</a>
+        <a href="#unidad4">Unidad 4</a>
+    </nav>
+    <div class="container">
+        <div class="indice" id="indice">
+            <h2>Temario</h2>
+            <ul>
+                <li><a href="#unidad1">Unidad 1: Arquitectura de Cómputo</a>
+                    <ul>
+                        <li>1.1 Modelos de arquitecturas de cómputo</li>
+                        <li>1.2 Análisis de componentes</li>
+                    </ul>
+                </li>
+                <li><a href="#unidad2">Unidad 2: Unidad Central de Procesamiento</a>
+                    <ul>
+                        <li>2.1 Organización del procesador</li>
+                        <li>2.2 Estructura de registros</li>
+                        <li>2.3 El ciclo de la instrucción</li>
+                        <li>2.3.2 Segmentación de instrucciones</li>
+                        <li>2.3.3 Conjunto de instrucciones (ISA)</li>
+                        <li>2.3.4 Modos de direccionamiento</li>
+                    </ul>
+                </li>
+                <li><a href="#unidad3">Unidad 3: Selección de Componentes</a>
+                    <ul>
+                        <li>3.1 Chipset y componentes clave</li>
+                        <li>3.2 Aplicaciones y ambientes de servicio</li>
+                    </ul>
+                </li>
+                <li><a href="#unidad4">Unidad 4: Procesamiento Paralelo</a>
+                    <ul>
+                        <li>4.1 Aspectos básicos</li>
+                        <li>4.2 Tipos de computación paralela</li>
+                        <li>4.3 Sistemas de memoria compartida</li>
+                        <li>4.4 Redes de interconexión</li>
+                        <li>4.5 Casos de estudio y tecnologías</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- UNIDAD 1 -->
+        <h2 id="unidad1">Unidad 1: Arquitectura de Cómputo</h2>
+        <div class="subtitulo">1.1 Modelos de arquitecturas de cómputo</div>
+        <ul>
+            <li><b>Arquitectura Von Neumann:</b>
+                <ul>
+                    <li>Un solo bus compartido para datos e instrucciones.</li>
+                    <li>Ventajas: Simplicidad y bajo costo.</li>
+                    <li>Desventaja: Cuello de botella en el bus (no puede acceder a datos e instrucciones al mismo tiempo).</li>
+                    <li>Ejemplo: Computadoras personales, laptops, servidores tradicionales.</li>
+                </ul>
+            </li>
+            <li><b>Arquitectura Harvard:</b>
+                <ul>
+                    <li>Buses separados para datos e instrucciones.</li>
+                    <li>Ventajas: Mayor velocidad y eficiencia, permite acceso simultáneo a datos e instrucciones.</li>
+                    <li>Ejemplo: Microcontroladores, DSPs, sistemas embebidos.</li>
+                </ul>
+            </li>
+            <li><b>Arquitectura Pipeline:</b>
+                <ul>
+                    <li>Divide la ejecución de instrucciones en etapas secuenciales (fetch, decode, execute, write back).</li>
+                    <li>Permite procesar varias instrucciones a la vez (paralelismo a nivel de instrucción).</li>
+                    <li>Ventaja: Aumenta el rendimiento sin aumentar la frecuencia de reloj.</li>
+                    <li>Desventaja: Riesgo de conflictos y burbujas en el pipeline.</li>
+                </ul>
+            </li>
+            <li><b>Arquitecturas multiprocesador:</b>
+                <ul>
+                    <li>SISD (Single Instruction, Single Data): Computadoras tradicionales.</li>
+                    <li>SIMD (Single Instruction, Multiple Data): GPUs, procesamiento vectorial.</li>
+                    <li>MISD (Multiple Instruction, Single Data): Poco común, sistemas de tolerancia a fallos.</li>
+                    <li>MIMD (Multiple Instruction, Multiple Data): Multiprocesadores, clusters, supercomputadoras.</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="subtitulo">1.2 Análisis de componentes</div>
+        <ul>
+            <li><b>CPU:</b> Unidad de control (coordina operaciones), ALU (realiza cálculos aritméticos y lógicos), registros (almacenamiento temporal de datos).</li>
+            <li><b>ALU (Unidad Aritmético Lógica):</b> Realiza operaciones aritméticas (suma, resta, multiplicación, división) y lógicas (AND, OR, NOT, XOR).</li>
+            <li><b>Registros:</b> Memoria interna rápida para operaciones inmediatas. Ejemplo: AX, BX en x86; R0-R15 en ARM.</li>
+            <li><b>Buses:</b>
+                <ul>
+                    <li>Bus de datos: Transfiere información.</li>
+                    <li>Bus de direcciones: Indica destino/origen.</li>
+                    <li>Bus de control: Gestiona operaciones.</li>
+                </ul>
+            </li>
+            <li><b>Memoria:</b>
+                <ul>
+                    <li>Jerarquía: registros → caché (L1, L2, L3) → RAM → almacenamiento secundario (discos, SSDs).</li>
+                    <li>Tipos: SRAM (rápida, cara, caché), DRAM (lenta, barata, RAM principal), ROM, memorias flash.</li>
+                </ul>
+            </li>
+            <li><b>Entrada/Salida:</b>
+                <ul>
+                    <li>E/S programada: CPU controla directamente la transferencia de datos.</li>
+                    <li>E/S por interrupciones: Dispositivos notifican al CPU cuando están listos.</li>
+                    <li>DMA: Transferencia directa a memoria sin intervención del CPU.</li>
+                </ul>
+            </li>
+            <li><b>Interrupciones:</b> Permiten a dispositivos notificar eventos al CPU (hardware/software).</li>
+        </ul>
+
+        <!-- UNIDAD 2 -->
+        <h2 id="unidad2">Unidad 2: Unidad Central de Procesamiento</h2>
+        <div class="subtitulo">2.1 Organización del procesador</div>
+        <ul>
+            <li>Núcleos de ejecución (multicore): Cada núcleo puede ejecutar instrucciones de manera independiente.</li>
+            <li>Unidad de Manejo de Memoria (MMU): Traduce direcciones lógicas a físicas.</li>
+            <li>Memoria caché (L1, L2, L3): Almacena datos e instrucciones de uso frecuente.</li>
+            <li>Controlador de memoria: Gestiona el acceso a la RAM.</li>
+            <li>Unidades de ejecución especializadas: FPU (punto flotante), SIMD, GPU integrada.</li>
+        </ul>
+        <div class="subtitulo">2.2 Estructura de registros</div>
+        <ul>
+            <li><b>Registros de propósito general:</b> Almacenamiento temporal de datos (EAX, EBX en x86; R0-R15 en ARM).</li>
+            <li><b>Registros de punteros e índices:</b> Gestión de pila (ESP, EBP) y operaciones con cadenas (ESI, EDI).</li>
+            <li><b>Registros de control y estado:</b>
+                <ul>
+                    <li>Contador de programa (PC): Dirección de la siguiente instrucción.</li>
+                    <li>Registro de instrucciones (IR): Instrucción actual.</li>
+                    <li>Registro de banderas (FLAGS): Estado del procesador (zero, carry, sign, overflow).</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="subtitulo">2.3 El ciclo de la instrucción</div>
+        <ol>
+            <li><b>Fetch:</b> Obtención de la instrucción desde memoria.</li>
+            <li><b>Decode:</b> Decodificación de la instrucción.</li>
+            <li><b>Execute:</b> Ejecución de la operación.</li>
+            <li><b>Write-back:</b> Almacenamiento del resultado.</li>
+        </ol>
+        <div class="subtitulo">2.3.2 Segmentación de instrucciones</div>
+        <div class="highlight">
+            <b>Ejemplo de pipeline de 5 etapas:</b><br>
+            IF (Instruction Fetch) → ID (Instruction Decode) → EX (Execute) → MEM (Memory Access) → WB (Write Back)
+        </div>
+        <div class="subtitulo">2.3.3 Conjunto de instrucciones (ISA)</div>
+        <ul>
+            <li>Aritméticas (ADD, SUB, MUL, DIV)</li>
+            <li>Lógicas (AND, OR, XOR, NOT)</li>
+            <li>Transferencia de datos (MOV, LOAD, STORE)</li>
+            <li>Control de flujo (JMP, CALL, RET)</li>
+            <li>Instrucciones especializadas (SIMD, cifrado, multimedia)</li>
+        </ul>
+        <div class="subtitulo">2.3.4 Modos de direccionamiento</div>
+        <ul>
+            <li>Inmediato: Operando incluido en la instrucción.</li>
+            <li>Directo: Dirección de memoria especificada.</li>
+            <li>Indirecto: Registro contiene la dirección.</li>
+            <li>Registro: Operando en registro.</li>
+            <li>Indexado: Dirección = registro + desplazamiento.</li>
+            <li>Base + desplazamiento: Similar a indexado.</li>
+            <li>Relativo al PC: Para saltos condicionales.</li>
+        </ul>
+
+        <!-- UNIDAD 3 -->
+        <h2 id="unidad3">Unidad 3: Selección de Componentes</h2>
+        <div class="subtitulo">3.1 Chipset y componentes clave</div>
+        <ul>
+            <li><b>Northbridge:</b> Controla memoria y gráficos (RAM, GPU).</li>
+            <li><b>Southbridge:</b> Gestiona dispositivos de E/S (USB, SATA, audio, red).</li>
+            <li><b>VRM (Módulo Regulador de Voltaje):</b> Proporciona alimentación estable al CPU.</li>
+            <li><b>Conectores:</b> ATX, EPS, PCIe, SATA, M.2.</li>
+            <li><b>Slots de expansión:</b> PCI Express x1, x4, x16.</li>
+            <li><b>Criterios de selección:</b>
+                <ul>
+                    <li>Compatibilidad de socket (Intel, AMD, etc.).</li>
+                    <li>Tipo y velocidad de RAM soportada.</li>
+                    <li>Conectividad (USB, SATA, M.2, WiFi, Bluetooth).</li>
+                    <li>Soporte para overclocking y refrigeración.</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="subtitulo">3.2 Aplicaciones y ambientes de servicio</div>
+        <ul>
+            <li><b>Entornos empresariales:</b>
+                <ul>
+                    <li>Fiabilidad y redundancia (RAID, fuentes dobles).</li>
+                    <li>Sistemas RAID para respaldo de datos.</li>
+                    <li>Equipos All-in-One para ahorrar espacio.</li>
+                </ul>
+            </li>
+            <li><b>Entornos industriales:</b>
+                <ul>
+                    <li>Resistencia a condiciones extremas (temperatura, polvo, vibración).</li>
+                    <li>Conectores industriales (RS-485, CAN bus).</li>
+                    <li>Soporte a largo plazo y mantenimiento sencillo.</li>
+                </ul>
+            </li>
+            <li><b>Comercio electrónico:</b>
+                <ul>
+                    <li>Alta disponibilidad (24/7), escalabilidad, redundancia.</li>
+                    <li>Almacenamiento rápido (SSD NVMe, RAID).</li>
+                </ul>
+            </li>
+            <li><b>Gaming y multimedia:</b>
+                <ul>
+                    <li>GPU dedicada de alto rendimiento.</li>
+                    <li>Refrigeración avanzada (líquida, aire).</li>
+                    <li>Soporte para overclocking.</li>
+                    <li>Conectividad de alta velocidad (Ethernet, WiFi 6).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- UNIDAD 4 -->
+        <h2 id="unidad4">Unidad 4: Procesamiento Paralelo</h2>
+        <div class="subtitulo">4.1 Aspectos básicos</div>
+        <ul>
+            <li>División de problemas en partes ejecutables simultáneamente (paralelismo).</li>
+            <li><b>Ley de Amdahl:</b> Límite teórico de mejora mediante paralelismo.</li>
+            <li><b>Desafíos:</b>
+                <ul>
+                    <li>Sincronización de procesos.</li>
+                    <li>Coherencia de caché.</li>
+                    <li>Contención de recursos.</li>
+                    <li>Balanceo de carga.</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="subtitulo">4.2 Tipos de computación paralela</div>
+        <ul>
+            <li><b>Clasificación Flynn:</b>
+                <ul>
+                    <li>SISD (Single Instruction, Single Data): Computadoras tradicionales.</li>
+                    <li>SIMD (Single Instruction, Multiple Data): GPUs, procesamiento vectorial.</li>
+                    <li>MISD (Multiple Instruction, Single Data): Poco común.</li>
+                    <li>MIMD (Multiple Instruction, Multiple Data): Multiprocesadores, clusters.</li>
+                </ul>
+            </li>
+            <li><b>Granularidad:</b>
+                <ul>
+                    <li>Paralelismo a nivel de bit, instrucción, datos, tarea.</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="subtitulo">4.3 Sistemas de memoria compartida</div>
+        <ul>
+            <li><b>UMA (Uniform Memory Access):</b> Tiempo de acceso uniforme para todos los procesadores.</li>
+            <li><b>NUMA (Non-Uniform Memory Access):</b> Tiempo de acceso variable según la ubicación de la memoria.</li>
+            <li><b>Memoria distribuida:</b> Cada procesador tiene memoria local.</li>
+            <li><b>Modelos híbridos:</b> Combinación de memoria compartida y distribuida.</li>
+        </ul>
+        <div class="subtitulo">4.4 Redes de interconexión</div>
+        <ul>
+            <li><b>Topologías estáticas:</b>
+                <ul>
+                    <li>Malla 2D/3D</li>
+                    <li>Tórus</li>
+                    <li>Hipercubo</li>
+                    <li>Árbol binario</li>
+                </ul>
+            </li>
+            <li><b>Topologías dinámicas:</b>
+                <ul>
+                    <li>Bus compartido</li>
+                    <li>Crossbar</li>
+                    <li>Red multietapa</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="subtitulo">4.5 Casos de estudio y tecnologías</div>
+        <ul>
+            <li><b>Supercomputadoras:</b>
+                <ul>
+                    <li>Frontier (EE.UU.): Más de 1 exaflop, arquitectura híbrida CPU-GPU.</li>
+                    <li>Fugaku (Japón): Basada en ARM, alto rendimiento y eficiencia energética.</li>
+                    <li>LUMI (Europa): Enfocada en IA y simulaciones científicas.</li>
+                </ul>
+            </li>
+            <li><b>Tecnologías paralelas:</b>
+                <ul>
+                    <li>CUDA (NVIDIA): Programación paralela en GPUs.</li>
+                    <li>OpenCL (estándar abierto): Computación paralela en CPUs, GPUs y FPGAs.</li>
+                    <li>ROCm (AMD): Plataforma abierta para GPUs AMD.</li>
+                    <li>oneAPI (Intel): Unifica programación para CPUs, GPUs y FPGAs.</li>
+                </ul>
+            </li>
+            <li><b>Frameworks:</b>
+                <ul>
+                    <li>MPI (Message Passing Interface): Comunicación entre procesos en memoria distribuida.</li>
+                    <li>OpenMP (para memoria compartida): Paralelismo en CPUs multinúcleo.</li>
+                </ul>
+            </li>
+            <li><b>Tendencias futuras:</b>
+                <ul>
+                    <li>Computación heterogénea (CPU+GPU+FPGA).</li>
+                    <li>Aceleradores especializados (IA, ML, criptografía).</li>
+                    <li>Interconexiones ópticas para mayor velocidad.</li>
+                    <li>Arquitecturas neuromórficas (inspiradas en el cerebro).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- APARTADO DE PRÁCTICAS AL FINAL -->
+        <h2 id="practicas" style="color:#2c3e50; margin-top:2.5rem;">Prácticas</h2>
+        <div class="practica">
+            <h3>Práctica 1 </h3>
+            <p>
+                Descarga el documento de la práctica:<br>
+                <a href="Practica1.docx" download>Descargar Práctica 1.docx</a>
+            </p>
+            <p>
+                Ejercicios y actividades para reforzar los conceptos de la Unidad 1.
+            </p>
+        </div>
+        <div class="practica">
+            <h3>Práctica 2 </h3>
+            <p>
+                Descarga el documento de la práctica:<br>
+                <a href="Practica2.docx" download>Descargar Práctica 2.docx</a>
+            </p>
+            <p>
+                Ejercicios y actividades para reforzar los conceptos de la Unidad 2.
+            </p>
+        </div>
+        <div class="practica">
+            <h3>Práctica 3 </h3>
+            <p>
+                Descarga el documento de la práctica:<br>
+                <a href="Practica3.docx" download>Descargar Práctica 3.docx</a>
+            </p>
+            <p>
+                Ejercicios y actividades para reforzar los conceptos de la Unidad 3.
+            </p>
+        </div>
+        <div class="practica">
+            <h3>Práctica 5 </h3>
+            <p>
+                Descarga el documento de la práctica:<br>
+                <a href="Practica5.docx" download>Descargar Práctica 5.docx</a>
+            </p>
+            <p>
+                Ejercicios y actividades para reforzar los conceptos de la Unidad 4.
+            </p>
+        </div>
+        <div class="practica">
+            <h3>Práctica 6 </h3>
+            <p>
+                Descarga el documento de la práctica (Excel):<br>
+                <a href="Practica6.xlsx" download>Descargar Práctica 6.xlsx</a>
+            </p>
+            <p>
+                Actividad práctica en hoja de cálculo para análisis de procesamiento paralelo.
+            </p>
+        </div>
+
+        <footer>
+            © 2024 Arquitectura de Computadoras - Todos los derechos reservados
+        </footer>
+    </div>
+</body>
+</html>
